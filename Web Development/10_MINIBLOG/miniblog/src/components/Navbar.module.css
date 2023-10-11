@@ -28,7 +28,6 @@
 
 .links_list a {
     padding: .4em .6em;
-    text-decoration: none; /* Adicionei isso para remover a sublinhado padrão dos links */
 }
 
 .active {
@@ -36,3 +35,10 @@
     color: #fff;
 }
     
+li {
+    text-decoration: none;
+  }
+
+span {
+    padding-right: 30em;
+}

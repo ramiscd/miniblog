@@ -11,10 +11,25 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+
+    setError("")
+
+    const user = {
+      displayName,
+      email,
+      password
+    }
+
+    if(password !== confirmPassword){
+      setError("As senhas precisam ser iguais")
+      return
+    }
+
+    console.log(user)
   }
 
   return (
-    <div>
+    <div className={styles.register}>
       <h1>Cadastre-se para postar</h1>
       <p>Crie seu usuário e compartilhe suas histórias</p>
       <form onSubmit={handleSubmit}>
@@ -30,12 +45,25 @@ const Register = () => {
           />
         </label>
         <label>
+          <span>Email:</span>
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder="Insira seu email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </label>
+        <label>
           <span>Senha:</span>
           <input
             type="password"
             name="password"
             required
             placeholder="Insira sua senha"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </label>
         <label>
@@ -45,9 +73,12 @@ const Register = () => {
             name="confirmPassword"
             required
             placeholder="Confirme sua senha"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </label>
         <button className="btn">Cadastrar</button>
+        {error && <p className="error">{error}</p>}
       </form>
     </div>
   );
